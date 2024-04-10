@@ -25,14 +25,21 @@ body {
 }
 
 .counter {
-  width: 800px;
-  height: 300px;
+  width: 1000px;
+  height: 460px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 2px solid #fff;
   border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.counter h3 {
+  padding-bottom: 30px;
+  color: #fff;
+  font-size: 3.5rem;
 }
 
 .reset {
@@ -43,9 +50,6 @@ body {
   margin-bottom: 10%;
   cursor: pointer;
 }
-
-
-
 
 .wrapper {
   width: 400px;
@@ -78,4 +82,14 @@ body {
   border-right:  3px solid rgba(0, 0, 0, 0.2);
   border-left:  3px solid rgba(0, 0, 0, 0.2);
   pointer-events: none;
+}
+
+.yourMonths{
+  color: #fff;
+  padding-top: 20px;
+}
+
+
+.yourHours, .yourDays {
+  color: #fff;
 }
