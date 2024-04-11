@@ -8,7 +8,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(to bottom, #000, #343f4f);
+  background-image: linear-gradient(to bottom, #34495E, #5DADE2);
 }
 
 .main {
@@ -38,8 +38,7 @@ body {
   padding: 20px 0;
   border-radius: 12px;
   box-shadow:  0 5px 10px rgba(0, 0, 0, 0.6);
-  background-image: linear-gradient(to top, #000, #343f4f);
-
+  background-image: linear-gradient(to top, #34495E, #5DADE2);
 }
 
 .counter h3 {
@@ -50,7 +49,7 @@ body {
 
 /* RESET */
 .reset {
-  color: rgb(167, 53, 53);
+  color: #E74C3C;
   font-size: 30px;
   background-color: transparent;
   border: none;
@@ -119,7 +118,6 @@ body {
   padding: 20px;
 }
 
-
 .footer p {
   margin-right: 20px; 
   font-size: 16px;
@@ -130,29 +128,23 @@ body {
   cursor: pointer;
 }
 
-
-
-/***** MEDIA QUERIES *****/
-
-
 /* TABLET */
 
 @media screen  and (min-width: 481px) and (max-width: 1023px){
-  
   .main {
-    max-height: calc(100vh - 20px); /* 20px è l'altezza del footer */
-    overflow-y: auto; /* Aggiunge la barra di scorrimento verticale se necessario */
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
   }
-  
+
   .counter {
-  width: auto;
+    width: auto;
   }
 
   .header h1 {
     font-size: 7rem;
     margin-top: 100px;
     margin-bottom: 80px;
-    padding: 0 20PX;
+    padding: 0 20px;
   }
 
   .counter h3 {
@@ -190,16 +182,16 @@ body {
     text-align: center;
     padding-right: 10px;
   }
-  }
-
+}
 
 /* MOBILE */
 
 @media screen and (max-width: 480px) {
   .main {
     max-height: calc(100vh - 20px);
-    overflow-y: auto; /
+    overflow-y: auto;
   }
+
   .header h1 {
     text-align: center;
     font-size: 4.5rem;
@@ -249,4 +241,3 @@ body {
     text-align: center;
   }
 }
-
