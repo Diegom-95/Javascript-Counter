@@ -1,3 +1,4 @@
+
 // main creation
 const main = document.createElement('div');
 main.className = 'main';
@@ -52,22 +53,45 @@ plus.textContent = '+';
 
 // span
 
+const spanContainer = document.createElement('div');
+spanContainer.className = 'spanContainer';
+
 const yourMonths = document.createElement('span');
 yourMonths.className = 'yourMonths';
-yourMonths.innerHTML = 'It\'s been <strong>0</strong> months'; 
+yourMonths.innerHTML = 'Months: <strong>0</strong>'; 
 
 const yourDays = document.createElement('span');
 yourDays.className = 'yourDays';
-yourDays.innerHTML = 'It\'s been <strong>0</strong> days'; 
+yourDays.innerHTML = 'Days: <strong>0</strong>'; 
 
 const yourHours = document.createElement('span');
 yourHours.className = 'yourHours';
-yourHours.innerHTML = 'It\'s been <strong>0</strong> months'; 
+yourHours.innerHTML = 'Hours: <strong>0</strong>'; 
 
 
 
-// Add main to the document
+// footer
+
+const footer = document.createElement('div');
+footer.className = 'footer';
+
+const footerText = document.createElement('p');
+footerText.textContent = '@Diego Maggioni';
+
+const githubIcon = document.createElement('i');
+githubIcon.className = 'fa-brands fa-github';
+githubIcon.addEventListener('click', function() {
+  window.location.href = 'https://github.com/Diegom-95';
+});
+
+
+
+
+
+// Add main and footer to the document
 document.body.appendChild(main);
+document.body.appendChild(footer);
+
 
 // Add div header and counter to the main div
 main.appendChild(header);
@@ -83,14 +107,22 @@ resetContainer.appendChild(reset);
 counter.appendChild(instruction);
 counter.appendChild(resetContainer);
 counter.appendChild(wrapper);
-counter.appendChild(yourMonths);
-counter.appendChild(yourDays);
-counter.appendChild(yourHours);
+counter.appendChild(spanContainer);
+
+//Add span elements to the span div
+spanContainer.appendChild(yourMonths);
+spanContainer.appendChild(yourDays);
+spanContainer.appendChild(yourHours);
 
 // Add elements to the wrapper
 wrapper.appendChild(minus);
 wrapper.appendChild(num);
 wrapper.appendChild(plus);
+
+// Add elements to the footer
+footer.appendChild(footerText);
+footer.appendChild(githubIcon);
+
 
 
 
@@ -108,9 +140,9 @@ plus.addEventListener('click', ()=> {
   clickSound.play();
   i++;
   num.innerText = i;
-  yourMonths.innerHTML = 'It\'s been <strong>' + formatMonths(months(i)) + '</strong> months already';
-  yourDays.innerHTML = 'It\'s been <strong>' + formatDays(days(i)) + '</strong> days already';
-  yourHours.innerHTML = 'It\'s been <strong>' + formatHours(hours(i)) + '</strong> hours already';
+  yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong> ';
+  yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
+  yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
   message(i);
 });
 
@@ -119,9 +151,9 @@ minus.addEventListener('click', ()=> {
   if(i > 0) {
     i--;
     num.innerText = i;
-    yourMonths.innerHTML = 'It\'s been <strong>' + formatMonths(months(i)) + '</strong> months already';
-    yourDays.innerHTML = 'It\'s been <strong>' + formatDays(days(i)) + '</strong> days already';
-    yourHours.innerHTML = 'It\'s been <strong>' + formatHours(hours(i)) + '</strong> hours already';
+    yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong>';
+    yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
+    yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
     message(i);
   }
 });
@@ -130,11 +162,9 @@ reset.addEventListener('click', ()=> {
   clickReset.play();
   i = 0;
   num.innerText = i;
-  yourMonths.innerHTML = 'It\'s been <strong>' + formatMonths(months(i)) + '</strong> months already';
-  yourDays.innerHTML = 'It\'s been <strong>' + formatDays(days(i)) + '</strong> days already';
-  yourHours.innerHTML = 'It\'s been <strong>' + formatHours(hours(i)) + '</strong> hours already';
-
-
+  yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong>';
+  yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
+  yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
 });
 
 
@@ -143,7 +173,7 @@ reset.addEventListener('click', ()=> {
 
 function months(i) {
   if (i === 0) {
-    return '0 months';
+    return 0; // restituisce un numero invece di una stringa
   } else {
     let months = i * 12;
     return months;
@@ -152,7 +182,7 @@ function months(i) {
 
 function days(i) {
   if (i === 0) {
-    return '0 days';
+    return 0; // restituisce un numero invece di una stringa
   } else {
     let days = i * 365;
     return days;
@@ -161,12 +191,13 @@ function days(i) {
 
 function hours(i) {
   if (i === 0) {
-    return '0 hours';
+    return 0; // restituisce un numero invece di una stringa
   } else {
     let hours = i * 365 * 24;
     return hours;
   }
 }
+
 
 function formatMonths(months) {
   return months.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

@@ -8,7 +8,8 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: #343f4f;
+  background-image: linear-gradient(to bottom, #000, #343f4f);
+
 }
 
 .main {
@@ -20,30 +21,37 @@ body {
 
 .header h1 {
   color: #fff;
-  font-size: 150px;
+  font-size: 120px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
+/* COUNTER */
+
 .counter {
-  width: 1000px;
-  height: 460px;
+  width: 40%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 2px solid #fff;
+  padding: 20px 0;
   border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+  box-shadow:  0 5px 10px rgba(0, 0, 0, 0.6);
+  background-image: linear-gradient(to top, #000, #343f4f);
+
 }
 
 .counter h3 {
   padding-bottom: 30px;
   color: #fff;
-  font-size: 3.5rem;
+  font-size: 30px;
 }
 
+/* RESET */
 .reset {
-  color: #fff;
+  color: rgb(167, 53, 53);
   font-size: 30px;
   background-color: transparent;
   border: none;
@@ -51,6 +59,7 @@ body {
   cursor: pointer;
 }
 
+/* WRAPPER */
 .wrapper {
   width: 400px;
   height: 100px;
@@ -84,12 +93,153 @@ body {
   pointer-events: none;
 }
 
-.yourMonths{
-  color: #fff;
+/* SPAN ELEMENTS */
+
+.spanContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
 }
 
-
-.yourHours, .yourDays {
+.yourHours, .yourDays, .yourMonths {
   color: #fff;
+  font-size: 20px;
+  padding-right: 20px;
 }
+.footer {
+  position: fixed; /* Cambio da absolute a fixed */
+  bottom: 0;
+  width: 100%;
+  height: 20px; /* Modifica l'altezza del footer */
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: #f0f0f0; 
+  padding: 20px;
+}
+
+
+.footer p {
+  margin-right: 20px; 
+  font-size: 16px;
+}
+
+.footer i {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+
+/***** MEDIA QUERIES *****/
+
+
+/* TABLET */
+
+@media screen  and (min-width: 481px) and (max-width: 1023px){
+  
+ .counter {
+  width: auto;
+}
+
+.header h1 {
+  font-size: 7rem;
+  margin-top: 140px;
+  margin-bottom: 80px;
+}
+
+.counter h3 {
+  font-size: 2.5rem;
+}
+
+.reset {
+  font-size: 20px;
+}
+
+.wrapper {
+  width: 400px;
+  height: 80px;
+  min-width: 380px;
+  margin: 0 100px;
+
+}
+
+.wrapper button {
+  font-size: 50px;
+  margin: 0 auto;
+}
+
+.wrapper span.num {
+  width: 35%;
+  font-size: 30px;
+}
+
+.spanContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.yourHours, .yourDays, .yourMonths {
+  font-size: 25px;
+  text-align: center;
+  padding-right: 10px;
+}
+ }
+
+
+/* MOBILE */
+
+@media screen and (max-width: 480px) {
+
+  .header h1 {
+    text-align: center;
+    font-size: 5.5rem;
+    margin: 0 20px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+
+  .counter {
+    width: auto;
+  }
+
+  .counter h3 {
+    font-size: 1.5rem;
+  }
+
+  .reset {
+    font-size: 17px;
+  }
+
+  .wrapper {
+    width: 200px;
+    height: 50px;
+    min-width: 260px;
+    margin: 0 40px;
+  }
+
+  .wrapper button {
+    font-size: 30px;
+    margin: 0 auto;
+  }
+
+  .wrapper span.num {
+    width: 35%;
+    font-size: 30px;
+  }
+
+  .spanContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .yourHours, .yourDays, .yourMonths {
+    font-size: 15px;
+    text-align: center;
+  }
+ 
+}
+
