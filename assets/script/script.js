@@ -1,4 +1,3 @@
-
 // main creation
 const main = document.createElement('div');
 main.className = 'main';
@@ -10,7 +9,7 @@ header.className = 'header';
 
 // h1
 const heading = document.createElement('h1');
-heading.textContent = 'Life Counter';
+heading.textContent = 'LIFE COUNTER';
 
 
 // COUNTER
@@ -80,11 +79,10 @@ footerText.textContent = '@Diego Maggioni';
 
 const githubIcon = document.createElement('i');
 githubIcon.className = 'fa-brands fa-github';
+
 githubIcon.addEventListener('click', function() {
-  window.location.href = 'https://github.com/Diegom-95';
+  window.open('https://github.com/Diegom-95', '_blank', 'noopener');
 });
-
-
 
 
 

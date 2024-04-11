@@ -107,11 +107,12 @@ body {
   font-size: 20px;
   padding-right: 20px;
 }
+
 .footer {
-  position: fixed; /* Cambio da absolute a fixed */
+  position: fixed; 
   bottom: 0;
   width: 100%;
-  height: 20px; /* Modifica l'altezza del footer */
+  height: 20px; 
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -139,62 +140,70 @@ body {
 
 @media screen  and (min-width: 481px) and (max-width: 1023px){
   
- .counter {
+  .main {
+    max-height: calc(100vh - 20px); /* 20px è l'altezza del footer */
+    overflow-y: auto; /* Aggiunge la barra di scorrimento verticale se necessario */
+  }
+  
+  .counter {
   width: auto;
 }
 
-.header h1 {
-  font-size: 7rem;
-  margin-top: 140px;
-  margin-bottom: 80px;
-}
+  .header h1 {
+    font-size: 7rem;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    padding: 0 20PX;
+  }
 
-.counter h3 {
-  font-size: 2.5rem;
-}
+  .counter h3 {
+    font-size: 2.5rem;
+  }
 
-.reset {
-  font-size: 20px;
-}
+  .reset {
+    font-size: 20px;
+  }
 
-.wrapper {
-  width: 400px;
-  height: 80px;
-  min-width: 380px;
-  margin: 0 100px;
+  .wrapper {
+    width: 400px;
+    height: 80px;
+    min-width: 380px;
+    margin: 0 100px;
+  }
 
-}
+  .wrapper button {
+    font-size: 50px;
+    margin: 0 auto;
+  }
 
-.wrapper button {
-  font-size: 50px;
-  margin: 0 auto;
-}
+  .wrapper span.num {
+    width: 35%;
+    font-size: 30px;
+  }
 
-.wrapper span.num {
-  width: 35%;
-  font-size: 30px;
-}
+  .spanContainer {
+    display: flex;
+    justify-content: center;
+  }
 
-.spanContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.yourHours, .yourDays, .yourMonths {
-  font-size: 25px;
-  text-align: center;
-  padding-right: 10px;
-}
- }
+  .yourHours, .yourDays, .yourMonths {
+    font-size: 25px;
+    text-align: center;
+    padding-right: 10px;
+  }
+  }
 
 
 /* MOBILE */
 
 @media screen and (max-width: 480px) {
-
+  .main {
+    max-height: calc(100vh - 20px);
+    overflow-y: auto; /
+  }
   .header h1 {
     text-align: center;
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     margin: 0 20px;
     margin-top: 40px;
     margin-bottom: 80px;
@@ -240,6 +249,5 @@ body {
     font-size: 15px;
     text-align: center;
   }
- 
 }
 
