@@ -9,7 +9,6 @@ body {
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(to bottom, #000, #343f4f);
-
 }
 
 .main {
@@ -19,6 +18,7 @@ body {
   justify-content: center;
 }
 
+/* TITLE */
 .header h1 {
   color: #fff;
   font-size: 120px;
@@ -27,7 +27,6 @@ body {
 }
 
 /* COUNTER */
-
 .counter {
   width: 40%;
   height: auto;
@@ -80,7 +79,7 @@ body {
   cursor: pointer;
   margin: 0 10%;
   border: none;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .wrapper span.num {
@@ -147,7 +146,7 @@ body {
   
   .counter {
   width: auto;
-}
+  }
 
   .header h1 {
     font-size: 7rem;
