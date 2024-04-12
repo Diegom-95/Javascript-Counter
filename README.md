@@ -1,7 +1,7 @@
 # :arrow_right: LIFE COUNTER :arrow_left:
 A simple counter that, based on the age selected by the user, returns the months, days, and hours that have passed since birth.
 
-<a href="https://github.com/Diegom-95/Javascript-Counter"><img src="assets/img/home.png"></a>
+<a href="https://the-life-counter.netlify.app/"><img src="assets/img/home.png"></a>
 
 
 ## :question: About
