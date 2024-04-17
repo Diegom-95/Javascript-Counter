@@ -1,127 +1,68 @@
-// main creation
-const main = document.createElement('div');
-main.className = 'main';
+// Function to create DOM elements
+function createElement(tagName, className, innerHTML) {
+  const element = document.createElement(tagName);
+  if (className) {
+    element.className = className;
+  }
+  if (innerHTML) {
+    element.innerHTML = innerHTML;
+  }
+  return element;
+}
 
 
-// HEADER
-const header = document.createElement('div');
-header.className = 'header';
+// CREATION OF DOM ELEMENTS
 
-// h1
-const heading = document.createElement('h1');
-heading.textContent = 'LIFE COUNTER';
-
-
-// COUNTER
-const counter = document.createElement('div');
-counter.className = 'counter';
-
-// h3
-const instruction = document.createElement('h3')
-instruction.className = 'instruction';
-instruction.textContent = 'ENTER YOUR AGE:';
-
-// reset
-const resetContainer = document.createElement('div');
-resetContainer.className = 'resetContainer';
-
-const reset = document.createElement('button');
-reset.className = 'reset';
-const icon = document.createElement('i');
-icon.className = 'fa-solid fa-rotate-right';
+// Main
+const main = createElement('div', 'main');
+// Header
+const header = createElement('div', 'header');
+const heading = createElement('h1', null, 'LIFE COUNTER');
+// Counter
+const counter = createElement('div', 'counter');
+const instruction = createElement('h3', 'instruction', 'ENTER YOUR AGE:');
+// Reset
+const resetContainer = createElement('div', 'resetContainer');
+const reset = createElement('button', 'reset');
+const icon = createElement('i', 'fa-solid fa-rotate-right');
 icon.setAttribute('aria-hidden', 'true');
 reset.appendChild(icon);
+// Wrapper
+const wrapper = createElement('div', 'wrapper');
+const minus = createElement('button', 'minus', '-');
+const num = createElement('span', 'num', '0');
+const plus = createElement('button', 'plus', '+');
+// Span
+const spanContainer = createElement('div', 'spanContainer');
+const yourMonths = createElement('span', 'yourMonths', 'Months: <strong>0</strong>');
+const yourDays = createElement('span', 'yourDays', 'Days: <strong>0</strong>');
+const yourHours = createElement('span', 'yourHours', 'Hours: <strong>0</strong>');
+// Footer
+const footer = createElement('div', 'footer');
+const footerText = createElement('p', null, '@Diego Maggioni');
+const githubIcon = createElement('i', 'fa-brands fa-github');
+githubIcon.setAttribute('onclick', "window.open('https://github.com/Diegom-95', '_blank', 'noopener')");
 
 
-// wrapper
-const wrapper = document.createElement('div');
-wrapper.className = 'wrapper';
-
-const minus = document.createElement('button');
-minus.className = 'minus';
-minus.textContent = '-';
-
-const num = document.createElement('span');
-num.className = 'num';
-num.textContent = '0';
-
-const plus = document.createElement('button');
-plus.className = 'plus';
-plus.textContent = '+';
-
-
-// span
-
-const spanContainer = document.createElement('div');
-spanContainer.className = 'spanContainer';
-
-const yourMonths = document.createElement('span');
-yourMonths.className = 'yourMonths';
-yourMonths.innerHTML = 'Months: <strong>0</strong>'; 
-
-const yourDays = document.createElement('span');
-yourDays.className = 'yourDays';
-yourDays.innerHTML = 'Days: <strong>0</strong>'; 
-
-const yourHours = document.createElement('span');
-yourHours.className = 'yourHours';
-yourHours.innerHTML = 'Hours: <strong>0</strong>'; 
-
-
-
-// footer
-
-const footer = document.createElement('div');
-footer.className = 'footer';
-
-const footerText = document.createElement('p');
-footerText.textContent = '@Diego Maggioni';
-
-const githubIcon = document.createElement('i');
-githubIcon.className = 'fa-brands fa-github';
-
-githubIcon.addEventListener('click', function() {
-  window.open('https://github.com/Diegom-95', '_blank', 'noopener');
-});
-
-
-
-// Add main and footer to the document
+// Adding elements to the DOM
 document.body.appendChild(main);
 document.body.appendChild(footer);
-
-
-// Add div header and counter to the main div
 main.appendChild(header);
 main.appendChild(counter);
-
-// Add h1 to the header
 header.appendChild(heading);
-
-// Add reset button to reset div
 resetContainer.appendChild(reset);
-
-// Add elements to the counter div
 counter.appendChild(instruction);
 counter.appendChild(resetContainer);
 counter.appendChild(wrapper);
 counter.appendChild(spanContainer);
-
-//Add span elements to the span div
 spanContainer.appendChild(yourMonths);
 spanContainer.appendChild(yourDays);
 spanContainer.appendChild(yourHours);
-
-// Add elements to the wrapper
+footer.appendChild(footerText);
+footer.appendChild(githubIcon);
 wrapper.appendChild(minus);
 wrapper.appendChild(num);
 wrapper.appendChild(plus);
-
-// Add elements to the footer
-footer.appendChild(footerText);
-footer.appendChild(githubIcon);
-
-
 
 
 // SOUNDS
@@ -133,90 +74,83 @@ const clickReset = new Audio('../assets/sound/reset.mp3');
 let i = 0;
 
 
-// EVENTS
-plus.addEventListener('click', ()=> {
-  clickSound.play();
-  i++;
-  num.innerText = i;
-  yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong> ';
-  yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
-  yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
-  message(i);
-});
+// LISTENER
 
-minus.addEventListener('click', ()=> {
-  clickSound.play();
-  if(i > 0) {
-    i--;
-    num.innerText = i;
-    yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong>';
-    yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
-    yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
-    message(i);
-  }
-});
-
-reset.addEventListener('click', ()=> {
+// Add listener for the reset button
+reset.addEventListener('click', () => {
   clickReset.play();
   i = 0;
   num.innerText = i;
-  yourMonths.innerHTML = 'Months: <strong>' + formatMonths(months(i)) + '</strong>';
-  yourDays.innerHTML = 'Days: <strong>' + formatDays(days(i)) + '</strong>';
-  yourHours.innerHTML = 'Hours: <strong>' + formatHours(hours(i)) + '</strong>';
+  updateCounter(i);
 });
 
 
+// Add listener for plus and minus buttons
+wrapper.addEventListener('click', (event) => {
+  const target = event.target;
+  if (target.classList.contains('plus')) {
+    clickSound.play();
+    i++;
+    num.innerText = i;
+    updateCounter(i);
+  } else if (target.classList.contains('minus')) {
+    clickSound.play();
+    if (i > 0) {
+      i--;
+      num.innerText = i;
+      updateCounter(i);
+    }
+  }
+});
 
 // FUNCTIONS
 
-function months(i) {
+// Update counter
+function updateCounter(value) {
+  yourMonths.innerHTML = 'Months: <strong>' + formatTimeUnit(calculateTimeUnits(value, 'months')) + '</strong> ';
+  yourDays.innerHTML = 'Days: <strong>' + formatTimeUnit(calculateTimeUnits(value, 'days')) + '</strong>';
+  yourHours.innerHTML = 'Hours: <strong>' + formatTimeUnit(calculateTimeUnits(value, 'hours')) + '</strong>';
+  message(value);
+}
+
+// Calculate time units
+function calculateTimeUnits(i, unit) {
   if (i === 0) {
-    return 0; // restituisce un numero invece di una stringa
+    return 0;
   } else {
-    let months = i * 12;
-    return months;
+    let result = 0;
+    switch (unit) {
+      case 'months':
+        result = i * 12;
+        break;
+      case 'days':
+        result = i * 365;
+        break;
+      case 'hours':
+        result = i * 365 * 24;
+        break;
+      default:
+        result = 0;
+        break;
+    }
+    return result;
   }
 }
 
-function days(i) {
-  if (i === 0) {
-    return 0; // restituisce un numero invece di una stringa
-  } else {
-    let days = i * 365;
-    return days;
-  }
+// Insert a dot every three digits.
+function formatTimeUnit(value) {
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function hours(i) {
-  if (i === 0) {
-    return 0; // restituisce un numero invece di una stringa
-  } else {
-    let hours = i * 365 * 24;
-    return hours;
-  }
-}
-
-
-function formatMonths(months) {
-  return months.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-function formatDays(days) {
-  return days.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-function formatHours(hours) {
-  return hours.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
+// Alert message
 function message(i) {
-  if(i == 100) {
+  if (i == 100) {
     alert('100 - WOW! Congratulations');
-} else if (i == 150) {
+  } else if (i == 150) {
     alert('You\'re still alive?');  
-} else if (i == '50') {
+  } else if (i == '50') {
     alert('50 - Congratulations, you wear them very well!');
-} else if (i == '18') {
+  } else if (i == '18') {
     alert('18 - Now you\'re an adult');
-}
+  }
 }
